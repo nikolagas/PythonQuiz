@@ -151,14 +151,12 @@ print('I welcome you to this Science Quiz')
 
 
 def run_quiz():
-    # Asks the user for their name
     user_name = input('Enter your name: ')
     while not user_name.isalpha():
         print('Invalid name - please enter alphabetical characters only')
         user_name = input('Try again: ')
     print(f'Hello, {user_name}, please choose your quiz length below.')
 
-    # Asks the user for their preferred quiz length
     while True:
         global quiz_length
         quiz_length = input('You quiz can be 10, 15 or 20 questions. Choose: ')
@@ -168,18 +166,17 @@ def run_quiz():
             print('Invalid option. Try again')
             continue
 
-    # A function to randomise the number of questions the user specifies
+    # A function to read and randomise the order of questions
     questions = read_questions()
+    
     # A variable to keep track of the user's score
     num_correct = 0
 
-    for num, (question, answers) in enumerate(questions, start=1):  # Enumerates the questions starting from 1
+    for num, (question, answers) in enumerate(questions, start=1): 
         print(f"\nQuestion {num}:")
-
-        # Keeping track of users' scores is done by the ask_question function
+        
         num_correct += ask_question(question, answers)
 
-    # Prints the users correct questions and percentage scores
     print(f'\n{user_name}, you scored {num_correct} correct out of {num} questions')
     print(f'\nPercentage score: {get_percentage_score(num_correct, int(quiz_length))}')
 
@@ -209,7 +206,6 @@ def ask_question(question, answers):
         return 0
 
 
-# Function to print the question, answers and validate user choice: a, b, c or d
 def get_answer(question, answers):
     print(f"{question}?")
     labeled_answers = dict(zip(ascii_lowercase, answers))
@@ -257,4 +253,4 @@ class Player:
         self.total_questions = total_questions
 
 
-run_quiz()
+# run_quiz()
