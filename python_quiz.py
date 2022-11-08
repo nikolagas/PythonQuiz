@@ -180,8 +180,8 @@ def run_quiz():
     print(f'\n{user_name}, you scored {num_correct} correct out of {num} questions')
     print(f'\nPercentage score: {get_percentage_score(num_correct, int(quiz_length))}')
 
-    # Adds every individual player to a list of players
     players.append(Player(user_name, num_correct, quiz_length))
+    
     # Function to prompt for new player, validate input, run quiz again if needed and print scores of players
     add_new_player()
 
@@ -240,12 +240,10 @@ def add_new_player():
     return new_player
 
 
-# Calculates percentage score
 def get_percentage_score(score, total):
     return round(score / total * 100)
 
 
-# Player class with three attributes: name, score and total questions (quiz length)
 class Player:
     def __init__(self, name, score, total_questions):
         self.name = name
