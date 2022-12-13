@@ -182,17 +182,14 @@ def run_quiz():
 
     players.append(Player(user_name, num_correct, quiz_length))
     
-    # Function to prompt for new player, validate input, run quiz again if needed and print scores of players
     add_new_player()
 
 
-# Function to randomise the questions for the chosen quiz length
 def read_questions():
     number_of_questions = min(int(quiz_length), len(questions_dic))
     return random.sample(list(questions_dic.items()), k=number_of_questions)
 
 
-# Function to randomise the answer options and check for correct answer
 def ask_question(question, answers):
     correct_answer = answers[0]  # Correct answer is always the first item in the list of answers
     labeled_answers = random.sample(answers, k=len(answers))  # Randomises answer options
