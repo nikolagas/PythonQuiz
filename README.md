@@ -12,7 +12,8 @@ Requirements were:
    as well as a percentage score on the screen;
 6. The program should then prompt to ask if anybody else wants to take the quiz. It should then perform steps 1-4 again for the next user;
 7. Once all the users have finished the quiz, the program displays:
-    7.1 The average score of all users.
+    7.1 Highest total scores
+    7.2 Highest percentage scores
 8. Handle user errors (e.g., incorrect input type, such as empty answer or name etc.).
 
 
