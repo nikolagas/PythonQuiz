@@ -215,21 +215,20 @@ def get_answer(question, answers):
     return labeled_answers[answer_label]
 
 
-# Optionally adds new player after the quiz is finished
 def add_new_player():
     while True:
         try:
             new_player = input(f'\nAnyone else want to play? Yes or No: ')
-            # If new player wants to play, main function is executed
             if new_player in ['Y', 'Yes', 'y', 'yes']:
                 run_quiz()
                 break
-            # If not, player results are printed
             elif new_player in ['N', 'No', 'n', 'no']:
                 print('\nIndividual results are presented below')
                 for player in players:
                     print(f'[ {player.name}: {player.score} / {player.total_questions}: '
                           f'{get_percentage_score(player.score, int(player.total_questions))}% ]')
+                print(f'Highest total score: {max_total_score()}'
+                      f'\nHighest percentage score: {max_percentage_score()}')
                 break
         except ValueError:
             print('Choose yes or no.')
@@ -241,11 +240,22 @@ def get_percentage_score(score, total):
     return round(score / total * 100)
 
 
+def max_total_score():
+    return max(players, key=lambda player: player.score)
+
+
+def max_percentage_score():
+    return max(players, key=lambda player: player.score / int(player.total_questions * 100))
+
+
 class Player:
     def __init__(self, name, score, total_questions):
         self.name = name
         self.score = score
         self.total_questions = total_questions
+
+    def __repr__(self):
+        return f'{self.name}: {self.score} / {self.total_questions}: {get_percentage_score(self.score, int(self.total_questions))}% '
 
 
 # run_quiz()
